@@ -2,6 +2,7 @@ package com.jkmiec.configuration.file;
 
 import com.jkmiec.model.ExchangeRates;
 import com.jkmiec.repository.ExchangeRatesRepository;
+import com.jkmiec.service.IExchangeRatesService;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -31,8 +32,12 @@ public class BatchConfig {
     @Autowired
     private StepBuilderFactory stepBuilderFactory;
 
+    private IExchangeRatesService exchangeRatesService;
+
     @Autowired
-    private ExchangeRatesRepository exchangeRatesRepository;
+    public BatchConfig(IExchangeRatesService exchangeRatesService) {
+        this.exchangeRatesService = exchangeRatesService;
+    }
 
     @Bean(name = "myJob")
     public Job job(Step importStep) {
@@ -53,7 +58,6 @@ public class BatchConfig {
                 .build();
     }
 
-
     @StepScope
     @Bean(name = "myImportStep")
     public StaxEventItemReader<ExchangeRates> importReader(@Value("#{jobParameters[file_path]}") String filePath) {
@@ -71,7 +75,7 @@ public class BatchConfig {
 
     @Bean
     public ItemWriter<ExchangeRates> importWriter() {
-        return items -> items.forEach(exchangeRatesRepository::save);
+        return items -> items.forEach(exchangeRatesService::save);
     }
 
 }
