@@ -23,7 +23,7 @@ import java.io.File;
 @Configuration
 public class IntegrationConfig {
 
-    private static final String DIRECTORY = "C:/Users/Jan/IdeaProjects/nbp-tracker/src/main/resources/data/";
+    private static final String DIRECTORY = "src/main/resources/data/";
 
     @Autowired
     private JobLauncher jobLauncher;

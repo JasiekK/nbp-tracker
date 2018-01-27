@@ -7,8 +7,10 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.util.Date;
 
-@XmlRootElement(name = "pozycja")
+
+@XmlRootElement(name = "ExchangeRatesTable")
 @Entity
 @Table(name = "exchange_rates")
 public class ExchangeRates {
@@ -16,68 +18,69 @@ public class ExchangeRates {
     @GeneratedValue
     @XmlTransient
     private Long id;
-    private String name;
-    private int converter;
-    private String code;
-    private String averageExchangeRate;
+    private String tab;
+    private String no;
+    private Date effectiveDate;
+    private Rates rates;
 
     public ExchangeRates() {
     }
 
-    public ExchangeRates(String name, int converter, String code, String averageExchangeRate) {
-        this.name = name;
-        this.converter = converter;
-        this.code = code;
-        this.averageExchangeRate = averageExchangeRate;
+    public ExchangeRates(String tab, String no, Date effectiveDate, Rates rates) {
+        this.tab = tab;
+        this.no = no;
+        this.effectiveDate = effectiveDate;
+        this.rates = rates;
     }
 
     public Long getId() {
         return id;
     }
 
-    @XmlElement(name = "nazwa_waluty")
-    public String getName() {
-        return name;
+    @XmlElement(name = "Table")
+    public String getTab() {
+        return tab;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTab(String tab) {
+        this.tab = tab;
     }
 
-    @XmlElement(name = "przelicznik")
-    public int getConverter() {
-        return converter;
+    @XmlElement(name = "No")
+    public String getNo() {
+        return no;
     }
 
-    public void setConverter(int converter) {
-        this.converter = converter;
+    public void setNo(String no) {
+        this.no = no;
     }
 
-    @XmlElement(name = "kod_waluty")
-    public String getCode() {
-        return code;
+    @XmlElement(name = "EffectiveDate")
+    public Date getEffectiveDate() {
+        return effectiveDate;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setEffectiveDate(Date effectiveDate) {
+        this.effectiveDate = effectiveDate;
     }
 
-    @XmlElement(name = "kurs_sredni")
-    public String getAverageExchangeRate() {
-        return averageExchangeRate;
+    @XmlElement(name = "Rates")
+    public Rates getRates() {
+        return rates;
     }
 
-    public void setAverageExchangeRate(String averageExchangeRate) {
-        this.averageExchangeRate = averageExchangeRate;
+    public void setRates(Rates rates) {
+        this.rates = rates;
     }
 
     @Override
     public String toString() {
-        return "ExchangeRates{" +
-                "name='" + name + '\'' +
-                ", converter=" + converter +
-                ", code='" + code + '\'' +
-                ", averageExchangeRate=" + averageExchangeRate +
+        return "ExchangeRatesTable{" +
+                "id=" + id +
+                ", tab='" + tab + '\'' +
+                ", no='" + no + '\'' +
+                ", effectiveDate='" + effectiveDate + '\'' +
+                ", rates=" + rates +
                 '}';
     }
 }

@@ -1,7 +1,6 @@
 package com.jkmiec.configuration.file;
 
 import com.jkmiec.model.ExchangeRates;
-import com.jkmiec.repository.ExchangeRatesRepository;
 import com.jkmiec.service.IExchangeRatesService;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -24,7 +23,7 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 @EnableBatchProcessing
 public class BatchConfig {
 
-    private static final String ROOT_ELEMENT_NAME = "pozycja";
+    private static final String ROOT_ELEMENT_NAME = "ExchangeRatesTable";
 
     @Autowired
     private JobBuilderFactory jobBuilderFactory;
