@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface ExchangeRatesRequestRepository extends JpaRepository<ExchangeRatesRequest, Long> {
 
-    @Query("select e from ExchangeRatesRequest e where e.code = 'CHF' or e.code = 'USD' or e.code = 'EUR'")
+    @Query("select e from ExchangeRatesRequest e where e.code = 'CHF' or e.code = 'USD' or e.code = 'EUR' order by date desc")
     List<ExchangeRatesRequest> getBigThereByByCode();
 
 }
