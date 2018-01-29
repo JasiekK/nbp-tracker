@@ -22,7 +22,7 @@ import java.io.File;
 
 @Configuration
 public class IntegrationConfig {
-
+    //C:\Users\Jan\IdeaProjects\nbp-tracker\src\main\resources\data - zaleznie od sytstemu czasami trzeba podac cala
     private static final String DIRECTORY = "src/main/resources/data/";
 
     @Autowired
