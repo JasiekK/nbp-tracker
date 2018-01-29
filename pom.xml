@@ -86,9 +86,9 @@
         <version>3.9.1</version>
     </dependency>
     <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
-        <version>23.6-jre</version>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-core</artifactId>
+        <version>3.5.0</version>
     </dependency>
 </dependencies>
 
